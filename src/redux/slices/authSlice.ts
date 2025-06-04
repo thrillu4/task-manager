@@ -32,18 +32,22 @@ export const registerUser = createAsyncThunk<
   { rejectValue: string }
 >('auth/registerUser', async ({ email, password }, { rejectWithValue }) => {
   try {
-    const checkResponse = await axiosInstance.get(`/users?email=${email}`)
-    if (checkResponse.data.length > 0) {
+    const response = await axiosInstance.get<User[]>(`/users`)
+    const users = response.data
+    if (users.some((user) => user.email === email)) {
       return rejectWithValue('User with this email already exist.')
+    } else {
+      rejectWithValue('Failed to check email')
     }
-    const response = await axiosInstance.post<User>('/users', {
+    const createResponse = await axiosInstance.post<User>('/users', {
       email,
       password,
       createdAt: Date.now().toString(),
     })
-    return response.data
+    return createResponse.data
   } catch (error) {
     if (error instanceof Error) {
+      console.log(error)
       return rejectWithValue(error.message)
     }
     return rejectWithValue('Register failed!')

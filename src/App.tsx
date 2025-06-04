@@ -1,51 +1,14 @@
-import { useEffect } from 'react'
-import './App.css'
-import { useAppDispatch, useAppSelector } from './hooks'
-import { createTask, deleteTask, fetchTasks } from './redux/slices/tasksSlice'
-
+import { Route, Routes } from 'react-router-dom'
+import LoginPage from './pages/Login'
+import TasksPage from './pages/Tasks'
+import RegisterPage from './pages/Register'
 function App() {
-  const tasks = useAppSelector((state) => state.tasks.tasks)
-  const dispatch = useAppDispatch()
-  const handleAdd = () => {
-    dispatch(
-      createTask({
-        completed: false,
-        createdAt: Date.now().toString(),
-        description: 'any words for descr',
-        title: 'Created new One :D',
-      })
-    )
-  }
-
-  useEffect(() => {
-    dispatch(fetchTasks('1'))
-  }, [dispatch])
   return (
-    <div>
-      <h2>All tasks</h2>
-      {tasks.map((task) => {
-        const date = new Date(Number(task.createdAt))
-        return (
-          <div
-            className="m-2 border-2 border-amber-900 bg-rose-400 text-cyan-400"
-            key={task.id}
-          >
-            <h1>{task.title}</h1>
-            <p>{task.description}</p>
-            <div>Added at: {date.toString()}</div>
-            <button
-              className="hover:cursor-pointer"
-              onClick={() => dispatch(deleteTask(task.id))}
-            >
-              Delete Task
-            </button>
-          </div>
-        )
-      })}
-      <button className="hover:cursor-pointer" onClick={handleAdd}>
-        Add new one
-      </button>
-    </div>
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/tasks" element={<TasksPage />} />
+    </Routes>
   )
 }
 
