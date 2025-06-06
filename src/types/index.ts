@@ -3,7 +3,7 @@ import { z } from 'zod'
 export interface Task {
   title: string
   completed: boolean
-  description: string
+  description?: string
   userId: string
   id: string
   createdAt: string
@@ -69,3 +69,5 @@ export const taskSchema = z.object({
   title: z.string().min(2, 'Title is required!'),
   description: z.string().optional(),
 })
+
+export type TaskValue = z.infer<typeof taskSchema>

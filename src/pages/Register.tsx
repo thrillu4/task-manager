@@ -26,7 +26,7 @@ const RegisterPage: React.FC = () => {
       .then(async () => {
         toast.success('Registration successful!')
         await new Promise((resolve) => setTimeout(resolve, 3000))
-        navigate('tasks')
+        navigate('/tasks')
       })
       .catch((err: string) => {
         toast.error(err)
