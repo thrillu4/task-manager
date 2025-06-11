@@ -26,7 +26,7 @@ export const LoginPage: React.FC = () => {
       .unwrap()
       .then(async () => {
         toast.success('Login successful!')
-        await new Promise((resolve) => setTimeout(resolve, 3000))
+        await new Promise((resolve) => setTimeout(resolve, 1000))
         navigate('/tasks')
       })
       .catch((err: string) => {
@@ -75,7 +75,7 @@ export const LoginPage: React.FC = () => {
           </div>
           {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
           <button
-            className="mt-5 mb-14 rounded-md bg-[#57f] py-4.5 text-white"
+            className="mt-5 mb-14 cursor-pointer rounded-md bg-[#57f] py-4.5 text-white transition hover:bg-blue-700 disabled:opacity-50"
             type="submit"
             disabled={isLoading}
           >
@@ -84,7 +84,7 @@ export const LoginPage: React.FC = () => {
         </form>
         <p className="text-center text-[#7d7d7d]">
           Don't have an account?{' '}
-          <a className="text-[#57f]" href="/register">
+          <a className="text-[#57f] hover:underline" href="/register">
             Register
           </a>
         </p>

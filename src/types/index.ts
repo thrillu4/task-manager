@@ -31,6 +31,10 @@ export interface UserState {
   error: string | null
 }
 
+export interface SettingsState {
+  theme: 'light' | 'dark'
+}
+
 export const loginSchema = z.object({
   email: z
     .string()
@@ -71,3 +75,10 @@ export const taskSchema = z.object({
 })
 
 export type TaskValue = z.infer<typeof taskSchema>
+
+export const profileSchema = z.object({
+  email: z.string().email('Invalid email address').min(3, 'Email is required'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
+})
+
+export type ProfileFormValue = z.infer<typeof profileSchema>

@@ -22,6 +22,7 @@ const TasksPage: React.FC = () => {
   )
   const userId = useAppSelector((state: RootState) => state.auth.userId)
   const [showForm, setShowForm] = useState(false)
+  const [openTaskId, setOpenTaskId] = useState('')
 
   useEffect(() => {
     if (userId) {
@@ -68,7 +69,7 @@ const TasksPage: React.FC = () => {
       : tasks.filter((task) => task.completed === (filter === 'completed'))
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800">
       <div className="mx-auto max-w-4xl">
         <div className="mb-6 flex items-center justify-between">
           <h1 className="text-3xl font-bold text-gray-900">Task Manager</h1>
@@ -115,26 +116,44 @@ const TasksPage: React.FC = () => {
           </div>
         )}
         {error && <p className="mb-4 text-center text-red-500">{error}</p>}
-        {filteredTasks.length === 0 && <p>No tasks yet</p>}
+        {filteredTasks.length === 0 && (
+          <p className="dark:text-white">No tasks yet</p>
+        )}
         <ul className="space-y-4">
           {filteredTasks.map((task) => (
             <li
-              className="flex items-center justify-between rounded-lg bg-white p-4 shadow-md transition hover:shadow-lg"
+              className="flex flex-col rounded-lg bg-white p-4 shadow-md transition hover:shadow-lg dark:bg-gray-600 dark:text-white"
               key={task.id}
             >
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => handleToggleTask(task.id)}
-                className="mr-3 h-5 w-5 rounded text-blue-600"
-              />
-              <span>{task.title}</span>
-              <button
-                onClick={() => handleDeleteTask(task.id)}
-                className="text-red-500 transition hover:text-red-600"
-              >
-                <TrashIcon className="h-5 w-5" />
-              </button>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-10">
+                  <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => handleToggleTask(task.id)}
+                    className="mr-3 h-5 w-5 cursor-pointer rounded text-blue-600"
+                  />
+                  <span
+                    onClick={() =>
+                      setOpenTaskId(openTaskId === task.id ? '' : task.id)
+                    }
+                    className={`${task.completed ? 'line-through' : ''} cursor-pointer`}
+                  >
+                    {task.title}
+                  </span>
+                </div>
+                <button
+                  onClick={() => handleDeleteTask(task.id)}
+                  className="cursor-pointer text-red-500 transition hover:text-red-600"
+                >
+                  <TrashIcon className="h-5 w-5" />
+                </button>
+              </div>
+              {openTaskId === task.id && (
+                <p className="mt-5 text-sm text-gray-700 dark:text-gray-300">
+                  {task.description}
+                </p>
+              )}
             </li>
           ))}
         </ul>

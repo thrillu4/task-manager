@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   font-family: 'Inter', sans-serif;
+}
+
+.logo {
+  transition: transform 0.5s ease;
+}
+
+.logo:hover {
+  transform: rotate(360deg);
 }

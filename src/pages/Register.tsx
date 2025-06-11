@@ -91,14 +91,17 @@ const RegisterPage: React.FC = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full rounded-lg bg-blue-600 p-3 text-white transition hover:bg-blue-700 disabled:opacity-50"
+            className="w-full cursor-pointer rounded-lg bg-blue-600 p-3 text-white transition hover:bg-blue-700 disabled:opacity-50"
           >
             {isLoading ? 'Signing up...' : 'Sign Up'}
           </button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <a
+            href="/login"
+            className="cursor-pointer text-blue-600 hover:underline"
+          >
             Sign In
           </a>
         </p>
