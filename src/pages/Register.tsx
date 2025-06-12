@@ -23,9 +23,8 @@ const RegisterPage: React.FC = () => {
   const onSubmit = (data: RegisterFormValues) => {
     dispatch(registerUser({ email: data.email, password: data.password }))
       .unwrap()
-      .then(async () => {
+      .then(() => {
         toast.success('Registration successful!')
-        await new Promise((resolve) => setTimeout(resolve, 3000))
         navigate('/tasks')
       })
       .catch((err: string) => {
@@ -33,9 +32,9 @@ const RegisterPage: React.FC = () => {
       })
   }
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 bg-gradient-to-br dark:from-gray-900 dark:to-gray-800">
       <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
-        <h2 className="mb-6 text-center text-3xl font-bold text-gray-900">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 md:text-3xl">
           Sign Up
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import Sidebar from './components/Sidebar'
 import { useAppSelector } from './hooks'
 import Dashboard from './pages/Dashboard'
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
+      <ToastContainer position="bottom-right" autoClose={2000} theme={theme} />
     </>
   )
 }

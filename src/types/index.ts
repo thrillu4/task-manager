@@ -70,15 +70,36 @@ export const registerSchema = z
 export type RegisterFormValues = z.infer<typeof registerSchema>
 
 export const taskSchema = z.object({
-  title: z.string().min(2, 'Title is required!'),
+  title: z.string().min(1, 'Title is required!'),
   description: z.string().optional(),
 })
 
 export type TaskValue = z.infer<typeof taskSchema>
 
-export const profileSchema = z.object({
+export const profileEmailSchema = z.object({
   email: z.string().email('Invalid email address').min(3, 'Email is required'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  newEmail: z
+    .string()
+    .min(3, 'Enter a new email to change')
+    .email('Invalid email address'),
 })
 
-export type ProfileFormValue = z.infer<typeof profileSchema>
+export type ProfileEmailFormValue = z.infer<typeof profileEmailSchema>
+
+export const profilePasswordSchema = z
+  .object({
+    oldPassword: z.string().min(6, 'Password must be at least 6 characters'),
+    newPassword: z.string().min(6, 'Password must be at least 6 characters'),
+    confirmNewPassword: z
+      .string()
+      .min(
+        6,
+        'Please confirm your password! Password must be at least 6 characters'
+      ),
+  })
+  .refine((data) => data.newPassword === data.confirmNewPassword, {
+    message: 'The new password must match',
+    path: ['confirmNewPassword'],
+  })
+
+export type ProfilePasswordFormValue = z.infer<typeof profilePasswordSchema>

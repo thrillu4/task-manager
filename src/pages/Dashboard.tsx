@@ -73,20 +73,28 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  const handleNavigateToAddTask = () => {
+    if (!user) {
+      setModalOpen(true)
+    } else {
+      navigate('/tasks?modal=add')
+    }
+  }
+
   return (
-    <div className="h-screen bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800">
+    <div className="h-full bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800">
       <div className="mx-auto max-w-7xl">
-        <h1 className="mb-6 text-4xl font-bold text-gray-900 dark:text-gray-100">
+        <h1 className="mt-10 mb-6 text-center text-2xl font-bold text-gray-900 md:text-left md:text-4xl lg:mt-0 dark:text-gray-100">
           Welcome To Dashboard
         </h1>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col items-center gap-6 md:flex-row">
           <div className="shadow-card hover:shadow-card-hover col-span-1 w-full rounded-xl bg-white p-6 transition-all duration-300 dark:bg-gray-800">
-            <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+            <h2 className="mb-4 text-center font-semibold text-gray-900 md:text-left md:text-2xl dark:text-gray-100">
               My Tasks
             </h2>
             <ul className="flex flex-col gap-y-4">
               {tasks.length > 0 && user
-                ? tasks.map((task) => (
+                ? tasks.slice(0, 3).map((task) => (
                     <li
                       className="flex items-center justify-between rounded-lg bg-gray-50 p-4 transition hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
                       key={task.id}
@@ -104,7 +112,7 @@ const Dashboard: React.FC = () => {
                           >
                             {task.title}
                           </span>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                          <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
                             Due: {new Date(task.createdAt).toString()}
                           </p>
                         </div>
@@ -135,7 +143,7 @@ const Dashboard: React.FC = () => {
                           >
                             {task.title}
                           </span>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                          <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
                             Due: {task.dueDate}
                           </p>
                         </div>
@@ -150,14 +158,14 @@ const Dashboard: React.FC = () => {
                   ))}
             </ul>
             <button
-              onClick={handleInteraction}
+              onClick={handleNavigateToAddTask}
               className="mt-4 flex cursor-pointer items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 dark:bg-gray-700"
             >
               <PlusIcon className="mr-2 h-5 w-5" /> Add Task
             </button>
           </div>
-          <div className="shadow-card hover:shadow-card-hover col-span-1 rounded-xl bg-white p-6 transition-all duration-300 dark:bg-gray-800">
-            <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+          <div className="shadow-card hover:shadow-card-hover w-70 rounded-xl bg-white transition-all duration-300 md:w-auto md:p-6 dark:bg-gray-800">
+            <h2 className="mb-4 text-center font-semibold text-gray-900 md:text-left md:text-2xl dark:text-gray-100">
               Calendar
             </h2>
             <Calendar
@@ -168,9 +176,9 @@ const Dashboard: React.FC = () => {
             />
           </div>
         </div>
-        <div className="shadow-card hover:shadow-card-hover mt-6 rounded-xl bg-white p-6 transition-all duration-300 dark:bg-gray-800">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-gray-100">
-            {'taskStats'}
+        <div className="shadow-card hover:shadow-card-hover mt-6 rounded-xl bg-white transition-all duration-300 md:p-6 dark:bg-gray-800">
+          <h2 className="mb-4 text-center font-semibold text-gray-900 md:text-left md:text-2xl dark:text-gray-100">
+            Statistics
           </h2>
           <ResponsiveContainer width="100%" height={270}>
             <BarChart data={taskStats}>

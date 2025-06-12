@@ -1,6 +1,10 @@
-import { PlusIcon, TrashIcon } from '@heroicons/react/24/solid'
+import {
+  ArrowLeftStartOnRectangleIcon,
+  PlusIcon,
+  TrashIcon,
+} from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import TaskForm from '../components/TaskForm'
 import { useAppDispatch, useAppSelector } from '../hooks'
@@ -23,6 +27,8 @@ const TasksPage: React.FC = () => {
   const userId = useAppSelector((state: RootState) => state.auth.userId)
   const [showForm, setShowForm] = useState(false)
   const [openTaskId, setOpenTaskId] = useState('')
+  const [searchParams] = useSearchParams()
+  const taskFormOpen = searchParams.get('modal') === 'add'
 
   useEffect(() => {
     if (userId) {
@@ -59,7 +65,7 @@ const TasksPage: React.FC = () => {
   const handleDeleteTask = (id: string) => {
     dispatch(deleteTask(id))
       .unwrap()
-      .then(() => toast.success('Task deleted!', { position: 'top-right' }))
+      .then(() => toast.success('Task deleted!'))
       .catch((error) => toast.error(error))
   }
 
@@ -70,13 +76,15 @@ const TasksPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto mt-10 max-w-4xl lg:mt-0">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-900">Task Manager</h1>
-          <div className="flex space-x-4">
+          <h1 className="text-xl font-bold text-gray-900 md:text-3xl">
+            Task Manager
+          </h1>
+          <div className="flex md:space-x-4">
             <button
               onClick={() => setShowForm(true)}
-              className="flex cursor-pointer items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700"
+              className="flex cursor-pointer items-center rounded-lg bg-blue-600 p-2 text-white transition hover:bg-blue-700 md:px-4 md:py-2"
             >
               <PlusIcon className="mr-2 h-5 w-5" /> Add Task
             </button>
@@ -85,9 +93,10 @@ const TasksPage: React.FC = () => {
                 dispatch(logout())
                 navigate('/login')
               }}
-              className="cursor-pointer text-blue-600 hover:underline"
+              className="hidden cursor-pointer text-blue-600 hover:underline md:flex md:items-center md:gap-1"
             >
-              Logout
+              <ArrowLeftStartOnRectangleIcon className="inline w-5" />
+              Log out
             </button>
           </div>
         </div>
@@ -104,7 +113,7 @@ const TasksPage: React.FC = () => {
             </button>
           ))}
         </div>
-        {showForm && (
+        {(showForm || taskFormOpen) && (
           <TaskForm
             onCancel={() => setShowForm(false)}
             onSubmit={handleAddTask}

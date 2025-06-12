@@ -1,5 +1,5 @@
 import {
-  ArrowRightEndOnRectangleIcon,
+  ArrowLeftStartOnRectangleIcon,
   Bars3Icon,
   CheckCircleIcon,
   Cog6ToothIcon,
@@ -33,8 +33,8 @@ const Sidebar = () => {
           { to: '/settings', icon: Cog6ToothIcon, label: 'Settings' },
           {
             to: '/',
-            icon: ArrowRightEndOnRectangleIcon,
-            label: 'Logout',
+            icon: ArrowLeftStartOnRectangleIcon,
+            label: 'Log out',
             onClick: handleLogout,
           },
         ]
@@ -47,7 +47,7 @@ const Sidebar = () => {
   return (
     <>
       <button
-        className="fixed top-4 left-4 z-50 rounded-lg bg-blue-600 p-2 text-white lg:hidden dark:bg-gray-700"
+        className="fixed top-1 left-1 z-50 rounded-lg bg-blue-600 p-2 text-white opacity-90 lg:hidden dark:bg-gray-700"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
@@ -59,7 +59,7 @@ const Sidebar = () => {
       <div
         className={`fixed inset-y-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-40 flex w-64 flex-col bg-blue-800 text-white transition-transform duration-300 ease-in-out lg:z-10 lg:translate-x-0 dark:bg-gray-900`}
       >
-        <div className="flex items-center gap-2 p-6">
+        <div className="mt-10 flex items-center gap-2 p-6 md:mt-0">
           <RectangleStackIcon className="logo w-10" />
           <span className="text-2xl font-bold">Task Master</span>
         </div>

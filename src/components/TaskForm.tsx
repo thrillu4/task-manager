@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { taskSchema, type TaskValue } from '../types'
 
@@ -13,10 +13,15 @@ const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, onCancel }) => {
     register,
     handleSubmit,
     reset,
+    setFocus,
     formState: { errors },
   } = useForm<TaskValue>({
     resolver: zodResolver(taskSchema),
   })
+
+  useEffect(() => {
+    setFocus('title')
+  }, [setFocus])
 
   const onSubmitForm = (data: TaskValue) => {
     onSubmit(data)

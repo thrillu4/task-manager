@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { loginUser } from '../redux/slices/authSlice'
 import type { RootState } from '../redux/store'
@@ -26,7 +26,6 @@ export const LoginPage: React.FC = () => {
       .unwrap()
       .then(async () => {
         toast.success('Login successful!')
-        await new Promise((resolve) => setTimeout(resolve, 1000))
         navigate('/tasks')
       })
       .catch((err: string) => {
@@ -35,9 +34,9 @@ export const LoginPage: React.FC = () => {
   }
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gray-100">
-      <div className="min-w-[500px] rounded-2xl bg-white p-8 shadow-lg">
-        <h2 className="mb-6 text-center text-3xl font-bold text-gray-900">
+    <div className="flex min-h-screen w-full items-center justify-center bg-gray-100 bg-gradient-to-br dark:from-gray-900 dark:to-gray-800">
+      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg dark:from-gray-900 dark:to-gray-800">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 md:text-3xl">
           Sign In
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-12 flex flex-col">
@@ -89,7 +88,6 @@ export const LoginPage: React.FC = () => {
           </a>
         </p>
       </div>
-      <ToastContainer position="bottom-right" />
     </div>
   )
 }

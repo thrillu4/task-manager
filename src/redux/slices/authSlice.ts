@@ -54,26 +54,59 @@ export const registerUser = createAsyncThunk<
   }
 })
 
-export const updateProfile = createAsyncThunk<
+export const updateProfileEmail = createAsyncThunk<
   User,
-  { id: string; email: string; password: string },
+  { id: string; newEmail: string },
+  { rejectValue: string }
+>('auth/updateProfileEmail', async ({ id, newEmail }, { rejectWithValue }) => {
+  try {
+    const checkResponse = await axiosInstance.get<User[]>(
+      `/users?email=${newEmail}`
+    )
+    if (checkResponse.data.length > 0 && checkResponse.data[0].id !== id) {
+      return rejectWithValue('Email already in use!')
+    }
+    const userDetails = await axiosInstance.get<User>(`/users/${id}`)
+    const password = userDetails.data.password
+    const response = await axiosInstance.put<User>(`/users/${id}`, {
+      email: newEmail,
+      password,
+      createdAt: Date.now().toString(),
+    })
+    return response.data
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 404) {
+      const userDetails = await axiosInstance.get<User>(`/users/${id}`)
+      const password = userDetails.data.password
+      const response = await axiosInstance.put<User>(`/users/${id}`, {
+        email: newEmail,
+        password,
+        createdAt: Date.now().toString(),
+      })
+      return response.data
+    }
+    if (error instanceof Error) {
+      return rejectWithValue(error.name)
+    }
+    return rejectWithValue('Update email failed!')
+  }
+})
+
+export const updateProfilePassword = createAsyncThunk<
+  User,
+  { id: string; oldPassword: string; newPassword: string; email: string },
   { rejectValue: string }
 >(
-  'auth/updateProfile',
-  async ({ id, email, password }, { rejectWithValue }) => {
+  'auth/updateProfilePassword',
+  async ({ id, newPassword, oldPassword, email }, { rejectWithValue }) => {
     try {
-      const checkResponse = await axiosInstance.get<User[]>(
-        `/users?email=${email}`
-      )
-      if (checkResponse.data.length > 0 && checkResponse.data[0].id !== id) {
-        return rejectWithValue('Email already in use!')
-      } else if (checkResponse.status === 404) {
-        console.log('unlucky!!')
+      const checkResponse = await axiosInstance.get<User>(`/users/${id}`)
+      if (checkResponse.data.password !== oldPassword) {
+        return rejectWithValue('The current password you entered is incorrect.')
       }
-
       const response = await axiosInstance.put<User>(`/users/${id}`, {
         email,
-        password: password || checkResponse.data[0].password,
+        password: newPassword,
         createdAt: Date.now().toString(),
       })
       return response.data
@@ -81,7 +114,7 @@ export const updateProfile = createAsyncThunk<
       if (axios.isAxiosError(error) && error.response?.status === 404) {
         const response = await axiosInstance.put<User>(`/users/${id}`, {
           email,
-          password,
+          password: newPassword,
           createdAt: Date.now().toString(),
         })
         return response.data
@@ -89,7 +122,7 @@ export const updateProfile = createAsyncThunk<
       if (error instanceof Error) {
         return rejectWithValue(error.name)
       }
-      return rejectWithValue('Update profile failed!')
+      return rejectWithValue('Update password failed!')
     }
   }
 )
@@ -151,18 +184,37 @@ export const authSlice = createSlice({
           state.error = 'Something went wrong'
         }
       })
-      .addCase(updateProfile.pending, (state) => {
+      .addCase(updateProfileEmail.pending, (state) => {
         state.isLoading = true
         state.error = null
       })
       .addCase(
-        updateProfile.fulfilled,
+        updateProfileEmail.fulfilled,
         (state, action: PayloadAction<User>) => {
           state.isLoading = false
           state.user = action.payload.email
         }
       )
-      .addCase(updateProfile.rejected, (state, action) => {
+      .addCase(updateProfileEmail.rejected, (state, action) => {
+        state.isLoading = false
+        if (action.payload) {
+          state.error = action.payload
+        } else {
+          state.error = 'Something went wrong'
+        }
+      })
+      .addCase(updateProfilePassword.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(
+        updateProfilePassword.fulfilled,
+        (state, action: PayloadAction<User>) => {
+          state.isLoading = false
+          state.token = action.payload.password
+        }
+      )
+      .addCase(updateProfilePassword.rejected, (state, action) => {
         state.isLoading = false
         if (action.payload) {
           state.error = action.payload

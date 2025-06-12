@@ -15,7 +15,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       <div className="shadow-card animate-slide-in w-full max-w-md rounded-xl bg-white p-8 dark:bg-gray-800">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Join TaskMaster
+            Join Task Master
           </h2>
           <button
             onClick={onClose}
