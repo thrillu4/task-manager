@@ -1,54 +1,110 @@
-# React + TypeScript + Vite
+# TaskMaster
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 **TaskMaster** is a sleek, modern task‑management app built with **React** & **TypeScript**. Plan, track, and conquer your tasks with style! 🌟  
 
-Currently, two official plugins are available:
+> “Organize your chaos, one task at a time.” — *TaskMaster Philosophy*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **🗓 Interactive Dashboard**  
+  Visualize your workload with a calendar and dynamic charts.
+  
+- **✅ Full CRUD Tasks**  
+  Create, edit, delete, and filter tasks (All • Completed • Pending).
+  
+- **🔒 Secure Authentication**  
+  Email/password registration & login with rigorous validation.
+  
+- **🎨 Theme Switcher**  
+  Toggle light 🌞 / dark 🌙 modes (preference stored in `localStorage`).
+  
+- **📱 Responsive Design**  
+  Fluid experience on mobile & desktop with a collapsible sidebar.
+  
+- **🔔 Toast Notifications**  
+  Instant feedback on actions (task creation, profile updates, etc.).
+  
+- **🌐 MockAPI Backend**  
+  Persistent storage for tasks and user data.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🛠 Tech Stack
+
+| Category   | Tools |
+| ---------: | :---- |
+| **Frontend** | ⚛️ React 19 · 📘 TypeScript 5.8 · 🔄 Redux Toolkit 2.8 · 🛤 React Router 7.6 |
+| **Styling** | 🎨 Tailwind CSS 4.1 (`dark:` mode) |
+| **Forms** | 📝 React Hook Form 7.57 · ✅ Zod 3.25 |
+| **Data** | 🌍 Axios 1.9 · 🗄 MockAPI |
+| **Visuals** | 📊 Recharts 2.15 · 🗓 React Calendar 6.0 · 🖼 Heroicons 2.2 |
+| **Build** | ⚡ Vite 6.3 · 🧶 Yarn |
+| **Code Quality** | 🔍 ESLint 9.25 · 🎀 Prettier 3.5 |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** ≥ 18  
+- **Yarn** ≥ 1.22  
+- **MockAPI** account (free)
+
+### Installation
+
+# 1. Clone the repository
+```bash
+git clone https://github.com/thrillu4/task-manager.git
+cd task-manager
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+# 2. Install dependencies
+```bash
+  yarn install
 ```
+# 3. Configure MockAPI:
+  - Create a project on MockAPI.
+  - Set up two resources:
+    ```bash
+      users: { id: string, email: string, password: string }
+      tasks: { id: string, title: string, description: string, completed: boolean, dueDate: string, userId: string, createdAt: string }
+    ```
+  - Update API_URL in .env file:
+   ```bash
+       VITE_BASE_URL = 'https://your-mockapi-id.mockapi.io';
+  ```
+  - Start the app:
+   ```bash
+      yarn dev
+   ```
+  Open http://localhost:5173 in your browser. 🎉
+
+  - Build for production:
+   ```bash
+    yarn build
+    yarn preview
+  ```
+
+---
+
+## 📖 Usage Guide
+Route	What you can do
+/dashboard	View upcoming tasks, charts & calendar
+/login, /register	Sign in or create an account
+/tasks	Add • complete • delete • filter tasks
+/settings	Update profile & toggle theme
+
+Pro Tip: Switch to dark mode in Settings for a cozy night‑time vibe. 🌙
+
+---
+
+## 📬 Feedback
+Have ideas or issues?
+Open an issue or start a discussion — let’s make TaskMaster unstoppable! 💪
+
+---
+
+Built by [thrillu4](https://github.com/thrillu4) • [Live Demo](https://taskmaster-manager.netlify.app) 
