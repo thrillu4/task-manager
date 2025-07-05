@@ -39,7 +39,11 @@ export const LoginPage: React.FC = () => {
         <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 md:text-3xl">
           Sign In
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-12 flex flex-col">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mt-12 flex flex-col"
+          role="form"
+        >
           <div className="mb-10 flex flex-col gap-2.5">
             <label className="ml-2.5" htmlFor="email">
               Email
@@ -78,14 +82,17 @@ export const LoginPage: React.FC = () => {
             type="submit"
             disabled={isLoading}
           >
-            {isLoading ? 'Logging in' : 'Sign In'}
+            {isLoading ? 'Log in' : 'Sign In'}
           </button>
         </form>
         <p className="text-center text-[#7d7d7d]">
           Don't have an account?{' '}
-          <a className="text-[#57f] hover:underline" href="/register">
+          <button
+            onClick={() => navigate('/register')}
+            className="cursor-pointer text-[#57f] hover:underline"
+          >
             Register
-          </a>
+          </button>
         </p>
       </div>
     </div>

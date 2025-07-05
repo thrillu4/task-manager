@@ -14,7 +14,7 @@ import {
 import Modal from '../components/Modal'
 import { useAppSelector } from '../hooks'
 import type { RootState } from '../redux/store'
-const fakeTasks = [
+export const fakeTasks = [
   {
     id: '1',
     title: 'Complete Project Proposal',
@@ -87,79 +87,88 @@ const Dashboard: React.FC = () => {
         <h1 className="mt-10 mb-6 text-center text-2xl font-bold text-gray-900 md:text-left md:text-4xl lg:mt-0 dark:text-gray-100">
           Welcome To Dashboard
         </h1>
-        <div className="flex flex-col items-center gap-6 md:flex-row">
+        <div className="flex flex-col gap-6 md:flex-row">
           <div className="shadow-card hover:shadow-card-hover col-span-1 w-full rounded-xl bg-white p-6 transition-all duration-300 dark:bg-gray-800">
             <h2 className="mb-4 text-center font-semibold text-gray-900 md:text-left md:text-2xl dark:text-gray-100">
               My Tasks
             </h2>
             <ul className="flex flex-col gap-y-4">
-              {tasks.length > 0 && user
-                ? tasks.slice(0, 3).map((task) => (
-                    <li
-                      className="flex items-center justify-between rounded-lg bg-gray-50 p-4 transition hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
-                      key={task.id}
-                    >
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          checked={task.completed}
-                          onChange={handleInteraction}
-                          className="mr-3 h-5 w-5 cursor-pointer rounded text-blue-600"
-                        />
-                        <div>
-                          <span
-                            className={`text-gray-900 dark:text-gray-100 ${task.completed ? 'line-through' : ''}`}
-                          >
-                            {task.title}
-                          </span>
-                          <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
-                            Due: {new Date(task.createdAt).toString()}
-                          </p>
-                        </div>
+              {tasks.length > 0 &&
+                user &&
+                tasks.slice(0, 3).map((task) => (
+                  <li
+                    className="flex items-center justify-between rounded-lg bg-gray-50 p-4 transition hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
+                    key={task.id}
+                  >
+                    <div className="flex items-center">
+                      <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={handleInteraction}
+                        className="mr-3 h-5 w-5 cursor-pointer rounded text-blue-600"
+                      />
+                      <div>
+                        <span
+                          className={`text-gray-900 dark:text-gray-100 ${task.completed ? 'line-through' : ''}`}
+                        >
+                          {task.title}
+                        </span>
+                        <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
+                          Due: {new Date(task.createdAt).toString()}
+                        </p>
                       </div>
-                      <button
-                        onClick={handleInteraction}
-                        className="cursor-pointer text-red-500 transition hover:text-red-600"
-                      >
-                        <TrashIcon className="h-5 w-5" />
-                      </button>
-                    </li>
-                  ))
-                : fakeTasks.map((task) => (
-                    <li
-                      key={task.id}
-                      className="flex items-center justify-between rounded-lg bg-gray-50 p-4 transition hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
+                    </div>
+                    <button
+                      onClick={handleInteraction}
+                      className="cursor-pointer text-red-500 transition hover:text-red-600"
+                      data-testid="trash"
                     >
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          checked={task.completed}
-                          onChange={handleInteraction}
-                          className="mr-3 h-5 w-5 rounded text-blue-600"
-                        />
-                        <div>
-                          <span
-                            className={`text-gray-900 dark:text-gray-100 ${task.completed ? 'line-through' : ''}`}
-                          >
-                            {task.title}
-                          </span>
-                          <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
-                            Due: {task.dueDate}
-                          </p>
-                        </div>
+                      <TrashIcon className="h-5 w-5" />
+                    </button>
+                  </li>
+                ))}
+              {!user &&
+                fakeTasks.map((task) => (
+                  <li
+                    key={task.id}
+                    className="flex items-center justify-between rounded-lg bg-gray-50 p-4 transition hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
+                  >
+                    <div className="flex items-center">
+                      <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={handleInteraction}
+                        className="mr-3 h-5 w-5 rounded text-blue-600"
+                      />
+                      <div>
+                        <span
+                          className={`text-gray-900 dark:text-gray-100 ${task.completed ? 'line-through' : ''}`}
+                        >
+                          {task.title}
+                        </span>
+                        <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
+                          Due: {task.dueDate}
+                        </p>
                       </div>
-                      <button
-                        onClick={handleInteraction}
-                        className="text-red-500 transition hover:text-red-600"
-                      >
-                        <TrashIcon className="h-5 w-5" />
-                      </button>
-                    </li>
-                  ))}
+                    </div>
+                    <button
+                      onClick={handleInteraction}
+                      className="text-red-500 transition hover:text-red-600"
+                    >
+                      <TrashIcon className="h-5 w-5" />
+                    </button>
+                  </li>
+                ))}
+              {user && tasks.length === 0 && (
+                <div className="`text-gray-900 dark:text-gray-100">
+                  You don't have any tasks yet.
+                </div>
+              )}
             </ul>
             <button
               onClick={handleNavigateToAddTask}
               className="mt-4 flex cursor-pointer items-center rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 dark:bg-gray-700"
+              data-testid="fake-trash"
             >
               <PlusIcon className="mr-2 h-5 w-5" /> Add Task
             </button>
@@ -189,7 +198,11 @@ const Dashboard: React.FC = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+        <Modal
+          isOpen={modalOpen}
+          data-testid="modal"
+          onClose={() => setModalOpen(false)}
+        />
       </div>
     </div>
   )

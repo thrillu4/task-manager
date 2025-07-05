@@ -37,7 +37,11 @@ const RegisterPage: React.FC = () => {
         <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 md:text-3xl">
           Sign Up
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4"
+          role="form"
+        >
           <div className="mb-10 flex flex-col gap-2.5">
             <label className="ml-2.5" htmlFor="email">
               Email
@@ -97,12 +101,12 @@ const RegisterPage: React.FC = () => {
         </form>
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <a
-            href="/login"
+          <button
+            onClick={() => navigate('/login')}
             className="cursor-pointer text-blue-600 hover:underline"
           >
             Sign In
-          </a>
+          </button>
         </p>
         <ToastContainer position="bottom-right" />
       </div>
