@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
         <h1 className="mt-10 mb-6 text-center text-2xl font-bold text-gray-900 md:text-left md:text-4xl lg:mt-0 dark:text-gray-100">
           Welcome To Dashboard
         </h1>
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
           <div className="shadow-card hover:shadow-card-hover col-span-1 w-full rounded-xl bg-white p-6 transition-all duration-300 dark:bg-gray-800">
             <h2 className="mb-4 text-center font-semibold text-gray-900 md:text-left md:text-2xl dark:text-gray-100">
               My Tasks

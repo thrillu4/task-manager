@@ -6,29 +6,6 @@ import LoginPage from '../../pages/Login'
 import { loginUser } from '../../redux/slices/authSlice'
 import type { RootState } from '../../redux/store'
 
-vi.mock('../../hooks', () => ({
-  useAppDispatch: vi.fn(),
-  useAppSelector: vi.fn(),
-}))
-
-vi.mock('react-router-dom', () => ({
-  useNavigate: vi.fn(),
-}))
-
-vi.mock('react-hook-form', () => ({
-  useForm: () => ({
-    register: vi.fn(),
-    handleSubmit: vi.fn(
-      (cb) => () => cb({ email: 'test@example.com', password: 'password123' })
-    ),
-    formState: { errors: {} },
-  }),
-}))
-
-vi.mock('../../redux/slices/authSlice', () => ({
-  loginUser: vi.fn(),
-}))
-
 describe('Login Page', () => {
   const mockNavigate = vi.fn()
   const mockDispatch = vi.fn()

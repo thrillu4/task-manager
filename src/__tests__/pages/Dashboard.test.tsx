@@ -5,12 +5,6 @@ import { useAppSelector } from '../../hooks'
 import Dashboard, { fakeTasks } from '../../pages/Dashboard'
 import type { RootState } from '../../redux/store'
 
-vi.mock('../../hooks', () => ({
-  useAppSelector: vi.fn(),
-}))
-vi.mock('react-router-dom', async () => ({
-  useNavigate: vi.fn(),
-}))
 vi.mock('react-calendar', () => ({
   default: ({ onChange }: { onChange: (date: Date) => void }) => (
     <div data-testid="calendar" onClick={() => onChange(new Date())}>
@@ -18,10 +12,12 @@ vi.mock('react-calendar', () => ({
     </div>
   ),
 }))
+
 vi.mock('../../components/Modal.tsx', () => ({
   default: ({ isOpen }: { isOpen: boolean }) =>
     isOpen ? <div data-testid="modal">Modal content</div> : null,
 }))
+
 vi.mock('recharts', () => ({
   BarChart: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="bar-chart">{children}</div>

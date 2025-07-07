@@ -20,6 +20,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           <button
             onClick={onClose}
             className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+            data-testid="close"
           >
             <XMarkIcon className="h-6 w-6 cursor-pointer" />
           </button>

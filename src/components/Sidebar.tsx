@@ -57,11 +57,12 @@ const Sidebar = () => {
         )}
       </button>
       <div
+        data-testid="menu"
         className={`fixed inset-y-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-40 flex w-64 flex-col bg-blue-800 text-white transition-transform duration-300 ease-in-out lg:z-10 lg:translate-x-0 dark:bg-gray-900`}
       >
         <div className="mt-10 flex items-center gap-2 p-6 md:mt-0">
           <RectangleStackIcon className="logo w-10" />
-          <span className="text-2xl font-bold">Task Master</span>
+          <h1 className="text-2xl font-bold">Task Master</h1>
         </div>
         <nav className="flex-1 space-y-2 px-4">
           {navItems.map((item, index) => (
@@ -88,6 +89,7 @@ const Sidebar = () => {
       </div>
       {isOpen && (
         <div
+          data-testid="overlay"
           className="fixed inset-0 z-30 bg-black opacity-50 lg:hidden"
           onClick={() => setIsOpen(false)}
         ></div>
