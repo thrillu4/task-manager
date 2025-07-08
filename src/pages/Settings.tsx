@@ -113,7 +113,7 @@ const Settings: React.FC = () => {
               </label>
               <input
                 type="email"
-                placeholder="Email"
+                placeholder="Your Email"
                 className="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                 {...register('email')}
               />

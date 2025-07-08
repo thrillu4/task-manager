@@ -45,6 +45,7 @@ const TasksPage: React.FC = () => {
           ...data,
           completed: false,
           userId,
+          createdAt: Date.now().toString(),
         })
       )
         .unwrap()

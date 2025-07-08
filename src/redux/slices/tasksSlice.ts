@@ -31,7 +31,7 @@ export const fetchTasks = createAsyncThunk<
 
 export const createTask = createAsyncThunk<
   Task,
-  Omit<Task, 'id' | 'createdAt'>,
+  Omit<Task, 'id'>,
   { rejectValue: string }
 >('tasks/createTask', async (task, { rejectWithValue }) => {
   try {

@@ -29,8 +29,13 @@ vi.mock('../hooks', () => ({
   useAppSelector: vi.fn(),
 }))
 
+vi.mock('../hooks/useTheme', () => ({
+  useTheme: vi.fn(),
+}))
+
 vi.mock('react-router-dom', () => ({
   useNavigate: vi.fn(),
+  useSearchParams: () => [new URLSearchParams()],
   NavLink: vi.fn(({ to, className, children, ...props }) => (
     <a
       href={to}
@@ -44,14 +49,4 @@ vi.mock('react-router-dom', () => ({
       {children}
     </a>
   )),
-}))
-
-vi.mock('react-hook-form', () => ({
-  useForm: () => ({
-    register: vi.fn(),
-    handleSubmit: vi.fn(
-      (cb) => () => cb({ email: 'test@example.com', password: 'password123' })
-    ),
-    formState: { errors: {} },
-  }),
 }))

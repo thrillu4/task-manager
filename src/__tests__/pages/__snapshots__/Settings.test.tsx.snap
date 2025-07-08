@@ -1,0 +1,440 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Settings page > should render settings page 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="min-h-screen flex-1 bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800"
+      >
+        <div
+          class="mx-auto mt-10 max-w-4xl lg:mt-0"
+        >
+          <h1
+            class="mb-6 text-2xl font-bold text-gray-900 md:text-4xl dark:text-gray-100"
+          >
+            Settings
+          </h1>
+          <div
+            class="shadow-card mb-6 rounded-xl bg-white p-6 dark:bg-gray-800 dark:text-gray-100"
+          >
+            <h2
+              class="mb-8 text-2xl font-semibold text-gray-900 dark:text-gray-100"
+            >
+              User Profile
+            </h2>
+            <p
+              class="mb-4 dark:text-gray-100"
+            >
+              Change your email here 
+              <svg
+                aria-hidden="true"
+                class="inline w-5 animate-bounce"
+                data-slot="icon"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </p>
+            <form
+              class="mb-10 space-y-5"
+            >
+              <div>
+                <label
+                  class="ml-3 dark:text-gray-100"
+                  for="email"
+                >
+                  Your Email Address:
+                </label>
+                <input
+                  class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                  name="email"
+                  placeholder="Your Email"
+                  type="email"
+                />
+              </div>
+              <div>
+                <label
+                  class="ml-3 dark:text-gray-100"
+                  for="newEmail"
+                >
+                  Your New Email Address:
+                </label>
+                <input
+                  class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                  name="newEmail"
+                  placeholder="New Email"
+                  type="email"
+                />
+              </div>
+              <button
+                class="mt-2 cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 disabled:opacity-50 dark:bg-gray-600 dark:hover:bg-gray-700"
+                type="submit"
+              >
+                Change Email
+              </button>
+            </form>
+            <p
+              class="mb-4 dark:text-gray-100"
+            >
+              Change your password here 
+              <svg
+                aria-hidden="true"
+                class="inline w-5 animate-bounce"
+                data-slot="icon"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </p>
+            <form
+              class="space-y-5"
+            >
+              <div>
+                <label
+                  class="ml-3"
+                  for="oldPassword"
+                >
+                  Your Current Password:
+                </label>
+                <input
+                  class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                  name="oldPassword"
+                  placeholder="Old Password"
+                  type="password"
+                />
+              </div>
+              <div>
+                <label
+                  class="ml-3"
+                  for="newPassword"
+                >
+                  Your New Password:
+                </label>
+                <input
+                  class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                  name="newPassword"
+                  placeholder="New Password"
+                  type="password"
+                />
+              </div>
+              <div>
+                <label
+                  class="ml-3"
+                  for="confirmNewPassword"
+                >
+                  Confirm Your New Password:
+                </label>
+                <input
+                  class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                  name="confirmNewPassword"
+                  placeholder="Confirm New Password"
+                  type="password"
+                />
+              </div>
+              <button
+                class="mt-2 cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 disabled:opacity-50 dark:bg-gray-600 dark:hover:bg-gray-700"
+                type="submit"
+              >
+                Change Password
+              </button>
+            </form>
+          </div>
+          <div
+            class="shadow-card rounded-xl bg-white p-6 dark:bg-gray-800"
+          >
+            <h2
+              class="mb-4 text-2xl font-semibold text-gray-900 dark:text-gray-100"
+            >
+              Appearance
+            </h2>
+            <div
+              class="flex items-center gap-4"
+            >
+              <span
+                class="text-gray-900 dark:text-gray-100"
+              >
+                Theme:
+              </span>
+              <button
+                class="text-bg-gray-200 cursor-pointer rounded-lg border border-gray-700 bg-gray-700 px-4 py-2 text-white transition hover:bg-gray-300 hover:text-gray-900 dark:bg-gray-300 dark:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                Dark
+                 Mode
+                <svg
+                  aria-hidden="true"
+                  class="inline w-6 pl-2"
+                  data-slot="icon"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="min-h-screen flex-1 bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800"
+    >
+      <div
+        class="mx-auto mt-10 max-w-4xl lg:mt-0"
+      >
+        <h1
+          class="mb-6 text-2xl font-bold text-gray-900 md:text-4xl dark:text-gray-100"
+        >
+          Settings
+        </h1>
+        <div
+          class="shadow-card mb-6 rounded-xl bg-white p-6 dark:bg-gray-800 dark:text-gray-100"
+        >
+          <h2
+            class="mb-8 text-2xl font-semibold text-gray-900 dark:text-gray-100"
+          >
+            User Profile
+          </h2>
+          <p
+            class="mb-4 dark:text-gray-100"
+          >
+            Change your email here 
+            <svg
+              aria-hidden="true"
+              class="inline w-5 animate-bounce"
+              data-slot="icon"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </p>
+          <form
+            class="mb-10 space-y-5"
+          >
+            <div>
+              <label
+                class="ml-3 dark:text-gray-100"
+                for="email"
+              >
+                Your Email Address:
+              </label>
+              <input
+                class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                name="email"
+                placeholder="Your Email"
+                type="email"
+              />
+            </div>
+            <div>
+              <label
+                class="ml-3 dark:text-gray-100"
+                for="newEmail"
+              >
+                Your New Email Address:
+              </label>
+              <input
+                class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                name="newEmail"
+                placeholder="New Email"
+                type="email"
+              />
+            </div>
+            <button
+              class="mt-2 cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 disabled:opacity-50 dark:bg-gray-600 dark:hover:bg-gray-700"
+              type="submit"
+            >
+              Change Email
+            </button>
+          </form>
+          <p
+            class="mb-4 dark:text-gray-100"
+          >
+            Change your password here 
+            <svg
+              aria-hidden="true"
+              class="inline w-5 animate-bounce"
+              data-slot="icon"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </p>
+          <form
+            class="space-y-5"
+          >
+            <div>
+              <label
+                class="ml-3"
+                for="oldPassword"
+              >
+                Your Current Password:
+              </label>
+              <input
+                class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                name="oldPassword"
+                placeholder="Old Password"
+                type="password"
+              />
+            </div>
+            <div>
+              <label
+                class="ml-3"
+                for="newPassword"
+              >
+                Your New Password:
+              </label>
+              <input
+                class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                name="newPassword"
+                placeholder="New Password"
+                type="password"
+              />
+            </div>
+            <div>
+              <label
+                class="ml-3"
+                for="confirmNewPassword"
+              >
+                Confirm Your New Password:
+              </label>
+              <input
+                class="border-gray-200, w-full rounded-lg border p-3 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                name="confirmNewPassword"
+                placeholder="Confirm New Password"
+                type="password"
+              />
+            </div>
+            <button
+              class="mt-2 cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 disabled:opacity-50 dark:bg-gray-600 dark:hover:bg-gray-700"
+              type="submit"
+            >
+              Change Password
+            </button>
+          </form>
+        </div>
+        <div
+          class="shadow-card rounded-xl bg-white p-6 dark:bg-gray-800"
+        >
+          <h2
+            class="mb-4 text-2xl font-semibold text-gray-900 dark:text-gray-100"
+          >
+            Appearance
+          </h2>
+          <div
+            class="flex items-center gap-4"
+          >
+            <span
+              class="text-gray-900 dark:text-gray-100"
+            >
+              Theme:
+            </span>
+            <button
+              class="text-bg-gray-200 cursor-pointer rounded-lg border border-gray-700 bg-gray-700 px-4 py-2 text-white transition hover:bg-gray-300 hover:text-gray-900 dark:bg-gray-300 dark:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Dark
+               Mode
+              <svg
+                aria-hidden="true"
+                class="inline w-6 pl-2"
+                data-slot="icon"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -72,7 +72,6 @@ const Dashboard: React.FC = () => {
       navigate('/tasks')
     }
   }
-
   const handleNavigateToAddTask = () => {
     if (!user) {
       setModalOpen(true)
@@ -114,7 +113,7 @@ const Dashboard: React.FC = () => {
                           {task.title}
                         </span>
                         <p className="hidden text-sm text-gray-600 md:block dark:text-gray-400">
-                          Due: {new Date(task.createdAt).toString()}
+                          Due: {new Date(+task.createdAt).toLocaleString()}
                         </p>
                       </div>
                     </div>
