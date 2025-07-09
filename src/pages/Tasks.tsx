@@ -153,6 +153,7 @@ const TasksPage: React.FC = () => {
                   </span>
                 </div>
                 <button
+                  data-testid="trash-icon"
                   onClick={() => handleDeleteTask(task.id)}
                   className="cursor-pointer text-red-500 transition hover:text-red-600"
                 >
