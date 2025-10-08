@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="h-full bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800">
+    <div className="h-full min-h-screen bg-gradient-to-br p-6 lg:ml-64 dark:from-gray-900 dark:to-gray-800">
       <div className="mx-auto max-w-7xl">
         <h1 className="mt-10 mb-6 text-center text-2xl font-bold text-gray-900 md:text-left md:text-4xl lg:mt-0 dark:text-gray-100">
           Welcome To Dashboard
